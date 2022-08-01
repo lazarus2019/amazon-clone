@@ -26,7 +26,7 @@ function PaymentMethodScreen() {
   const submitHandler = (e) => {
     e.preventDefault();
     cxtDispatch({ type: "SAVE_PAYMENT_METHOD", payload: paymentMethodName });
-    localStorage.setItem("paymentMethodName", paymentMethodName);
+    localStorage.setItem("paymentMethod", paymentMethodName);
     navigate("/placeorder");
   };
   return (
