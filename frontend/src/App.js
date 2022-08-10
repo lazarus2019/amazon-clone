@@ -36,7 +36,7 @@ import UserEditScreen from "./screens/UserEditScreen";
 
 function App() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
-  const { cart, userInfo } = state;
+  const { fullBox, cart, userInfo } = state;
 
   const signoutHandler = () => {
     ctxDispatch({ type: "USER_SIGNOUT" });
@@ -66,7 +66,11 @@ function App() {
       <div
         className={
           sideBarIsOpen
-            ? "d-flex flex-column site-container active-cont"
+            ? fullBox
+              ? "d-flex flex-column site-container active-cont full-box"
+              : "d-flex flex-column site-container"
+            : fullBox
+            ? "d-flex flex-column site-container active-cont full-box"
             : "d-flex flex-column site-container"
         }
       >
