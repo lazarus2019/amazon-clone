@@ -99,3 +99,105 @@ main {
 button.thumbnail {
   padding: 0;
 }
+
+/* Chatbox */
+.chatbox {
+  color: #000;
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+}
+
+.card-body-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.chatbox button {
+  margin-left: auto;
+}
+
+.chatbox ul {
+  overflow: scroll;
+  max-height: 20rem;
+}
+
+.chatbox li {
+  margin-bottom: 1rem;
+}
+
+.chatbox input {
+  width: calc(100% - 9rem);
+}
+
+.support-users {
+  background-color: #f0f0f0;
+  height: 100%;
+}
+
+.support-users ul {
+  background-color: #f8f8f8;
+  padding-left: 0;
+
+}
+
+.support-users button {
+  background-color: transparent;
+  border: none;
+  text-align: left;
+}
+
+.support-users li {
+  margin: 0;
+  background-color: #f0f0f0;
+  border-bottom: 0.1rem #c0c0c0 solid;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.support-users li:hover {
+  background-color: #f0f0f0;
+}
+
+.support-users li.selected {
+  background-color: #c0c0c0;
+}
+
+.support-messages {
+  padding: 1rem;
+}
+
+.support-messages input {
+  width: calc(100% -9rem);
+}
+
+.support-messages ul {
+  height: calc(100vh - 18rem);
+  max-height: calc(100vh - 18rem);
+  overflow: scroll;
+}
+
+.support-messages li {
+  margin-bottom: 1rem;
+}
+
+.support-users span {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+}
+
+.support-users .unread {
+  background-color: #808080;
+}
+
+.support-users .online {
+  background-color: #20a020;
+}
+
+.support-users .offline {
+  background-color: #f02020;
+}
