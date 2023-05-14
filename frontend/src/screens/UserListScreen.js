@@ -101,6 +101,7 @@ function UserListScreen() {
               <th>NAME</th>
               <th>EMAIL</th>
               <th>IS ADMIN</th>
+              <th>IS SELLER</th>
               <th>ACTIONS</th>
             </tr>
           </thead>
@@ -111,6 +112,7 @@ function UserListScreen() {
                 <td>{user.name}</td>
                 <td>{user.email}</td>
                 <td>{user.isAdmin ? "YES" : "NO"}</td>
+                <td>{user.isSeller ? "YES" : "NO"}</td>
                 <td>
                   <Button
                     type="button"

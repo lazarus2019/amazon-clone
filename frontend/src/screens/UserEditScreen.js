@@ -47,6 +47,7 @@ function UserEditScreen() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [isAdmin, setIsAdmin] = useState(false);
+  const [isSeller, setIsSeller] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -58,6 +59,7 @@ function UserEditScreen() {
         setName(data.name);
         setEmail(data.email);
         setIsAdmin(data.isAdmin);
+        setIsSeller(data.isSeller);
         dispatch({ type: "FETCH_SUCCESS", payload: data });
       } catch (err) {
         toast.error(getError(err));
@@ -78,6 +80,7 @@ function UserEditScreen() {
           name,
           email,
           isAdmin,
+          isSeller,
         },
         {
           headers: { Authorization: `Bearer ${userInfo.token}` },
@@ -128,6 +131,14 @@ function UserEditScreen() {
             label="isAdmin"
             checked={isAdmin}
             onChange={(e) => setIsAdmin(e.target.checked)}
+          />
+          <Form.Check
+            className="mb-3"
+            type="checkbox"
+            id="isSeller"
+            label="isSeller"
+            checked={isSeller}
+            onChange={(e) => setIsSeller(e.target.checked)}
           />
           <div className="mb-3">
             <Button disabled={loadingUpdate} type="submit">

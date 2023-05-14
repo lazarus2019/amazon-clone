@@ -29,6 +29,17 @@ function ProfileScreen() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
+  // Seller
+  const [sellerName, setSellerName] = useState("");
+  const [sellerLogo, setSellerLogo] = useState("");
+  const [sellerDescription, setSellerDescription] = useState("");
+
+  if (userInfo?.seller) {
+    setSellerName(userInfo.seller.name);
+    setSellerLogo(userInfo.seller.logo);
+    setSellerDescription(userInfo.seller.description);
+  }
+
   const [{ loadingUpdate }, dispatch] = useReducer(reducer, {
     loadingUpdate: false,
   });
@@ -47,6 +58,9 @@ function ProfileScreen() {
           name,
           email,
           password,
+            sellerName,
+            sellerLogo,
+            sellerDescription,
         },
         {
           headers: { Authorization: `Bearer ${userInfo.token}` },
@@ -102,6 +116,32 @@ function ProfileScreen() {
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
         </Form.Group>
+        {userInfo.isSeller && (
+          <>
+            <h2>Seller Profile</h2>
+            <Form.Group className="mb-3" controlId="sellerName">
+              <Form.Label>Seller Name</Form.Label>
+              <Form.Control
+                value={sellerName}
+                onChange={(e) => setSellerName(e.target.value)}
+              />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="sellerLogo">
+              <Form.Label>Seller Logo</Form.Label>
+              <Form.Control
+                value={sellerLogo}
+                onChange={(e) => setSellerLogo(e.target.value)}
+              />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="sellerDescription">
+              <Form.Label>Seller Description</Form.Label>
+              <Form.Control
+                value={sellerDescription}
+                onChange={(e) => setSellerDescription(e.target.value)}
+              />
+            </Form.Group>
+          </>
+        )}
         <div className="mb-3">
           <Button type="submit">Update</Button>
         </div>

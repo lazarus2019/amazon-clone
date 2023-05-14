@@ -34,7 +34,8 @@ import OrderListScreen from "./screens/OrderListScreen";
 import UserListScreen from "./screens/UserListScreen";
 import UserEditScreen from "./screens/UserEditScreen";
 import SupportScreen from "./screens/SupportScreen";
-import ChatBox from './components/ChatBox'
+import ChatBox from "./components/ChatBox";
+import SellerRoute from "./components/SellerRoute";
 
 function App() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
@@ -124,6 +125,16 @@ function App() {
                       Sign In
                     </Link>
                   )}
+                  {userInfo && userInfo.isSeller && (
+                    <NavDropdown title="Seller" id="admin-nav-dropdown">
+                      <LinkContainer to="/seller/products">
+                        <NavDropdown.Item>Products</NavDropdown.Item>
+                      </LinkContainer>
+                      <LinkContainer to="/seller/orders">
+                        <NavDropdown.Item>Orders</NavDropdown.Item>
+                      </LinkContainer>
+                    </NavDropdown>
+                  )}
                   {userInfo && userInfo.isAdmin && (
                     <NavDropdown title="Admin" id="admin-nav-dropdown">
                       <LinkContainer to="/admin/dashboard">
@@ -204,6 +215,23 @@ function App() {
                   <ProtectedRoute>
                     <OrderHistoryScreen />
                   </ProtectedRoute>
+                }
+              />
+              {/* Seller Routes */}
+              <Route
+                path="/seller/orders"
+                element={
+                  <SellerRoute>
+                    <OrderListScreen />
+                  </SellerRoute>
+                }
+              />
+              <Route
+                path="/seller/products"
+                element={
+                  <SellerRoute>
+                    <ProductListScreen />
+                  </SellerRoute>
                 }
               />
               {/* Admin Routes */}

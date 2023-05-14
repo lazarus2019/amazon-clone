@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { Navigate } from "react-router-dom";
-import {Store} from '../Store'
+import { Store } from "../Store";
 
 function AdminRoute({ children }) {
   const { state } = useContext(Store);
